@@ -4,7 +4,7 @@ import _ from 'lodash';
 import React from 'react';
 
 import VideoLayout from '../../../../../modules/UI/videolayout/VideoLayout';
-
+import {openConnection} from "../../../../../connection"
 import { connect, disconnect } from '../../../base/connection';
 import { translate } from '../../../base/i18n';
 import { connect as reactReduxConnect } from '../../../base/redux';
@@ -31,6 +31,7 @@ import {
     abstractMapStateToProps
 } from '../AbstractConference';
 import type { AbstractProps } from '../AbstractConference';
+import "./conference.css"
 
 declare var APP: Object;
 declare var config: Object;
@@ -189,6 +190,88 @@ class Conference extends AbstractConference<Props, *> {
                     { hideVideoQualityLabel
                         || <Labels /> }
                     <Filmstrip filmstripOnly = { filmstripOnly } />
+                    <div className="sub-room-overview" style={{
+                        position:"absolute",
+                        top: "150px", 
+                        left: "0px", 
+                        bottom: "150px", 
+                        width: "120px",
+                        zIndex: "5"
+                    }}>
+                        <a href={ window.location.href.split("-")[0]} className="subRoom1">
+                            <div 
+                            className="subRoom2"
+                            style={{
+                                backgroundColor: "#508991",
+                                width: "100px",
+                                height: "100px",
+                                margin: "10px",
+                                zIndex: "5",
+                                borderRadius: "20px",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center", 
+                                fontSize: "larger",
+                            }}>
+                            Livingroom
+                            </div>
+                        </a> 
+                        <a href={window.location.href.split("-")[0] + "-kitchen"} className="subRoom1">
+                            <div 
+                             className="subRoom2"
+                            style={{
+                                backgroundColor: "#172A3A",
+                                width: "100px",
+                                height: "100px",
+                                margin: "10px",
+                                zIndex: "5",
+                                borderRadius: "20px",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center", 
+                                fontSize: "larger"
+                            }}>
+                                Kitchen
+                            </div>
+                        </a>
+                        <a href={window.location.href.split("-")[0] + "-bedroom"} className="subRoom1">
+                            <div 
+                             className="subRoom2"
+                            style={{
+                                backgroundColor: "#004346",
+                                width: "100px",
+                                height: "100px",
+                                margin: "10px",
+                                zIndex: "5",
+                                borderRadius: "20px",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center", 
+                                fontSize: "larger"
+                            }}>
+                                Bedroom
+                            </div>
+                        </a>
+                        <a href={window.location.href.split("-")[0] + "-bathroom"}className="subRoom1">
+                            <div 
+                            className="subRoom2"
+                            style={{
+                                backgroundColor: "#09BC8A",
+                                width: "100px",
+                                height: "100px",
+                                margin: "10px",
+                                zIndex: "5",
+                                borderRadius: "20px",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center", 
+                                fontSize: "larger"
+                            }}>
+                                Bathroom
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
 
                 { filmstripOnly || <Toolbox /> }
@@ -230,6 +313,25 @@ class Conference extends AbstractConference<Props, *> {
      * @inheritdoc
      */
     _start() {
+      /*   try {
+            const urlArray = window.location.href.split("/")
+            const roomName = urlArray[urlArray.length -1].split("-")[0]
+            const tempConp = openConnection({ roomName: roomName + "-bathroom"}).then((res)=>{
+                console.log("CONNECTION OPENED")
+                console.log(
+                    res
+                )
+            })
+            console.log("tempConn")
+            console.log(tempConp);
+          
+            console.log("HEEEERRRREEEEE")
+            console.log(APP)
+            console.log(APP.store.getState())
+        } catch (err) {
+            console.log(err);
+        } */
+        
         APP.UI.start();
 
         APP.UI.registerListeners();

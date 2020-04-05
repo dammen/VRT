@@ -686,7 +686,7 @@
             "join": "Tap to join",
             "roomname": "Enter room name"
         },
-        "appDescription": "Go ahead, video chat with the whole team. In fact, invite everyone you know. {{app}} is a fully encrypted, 100% open source video conferencing solution that you can use all day, every day, for free — with no account needed.",
+        "appDescription": "Tell us the name of the cloudparty you wish to join or create.",
         "audioVideoSwitch": {
             "audio": "Voice",
             "video": "Video"
@@ -694,19 +694,19 @@
         "calendar": "Calendar",
         "connectCalendarButton": "Connect your calendar",
         "connectCalendarText": "",
-        "enterRoomTitle": "Start a new meeting",
+        "enterRoomTitle": "Start a new party",
         "go": "GO",
         "join": "JOIN",
         "info": "Info",
         "privacy": "Privacy",
         "recentList": "Recent",
         "recentListDelete": "Delete",
-        "recentListEmpty": "Your recent list is currently empty. Chat with your team and you will find all your recent meetings here.",
+        "recentListEmpty": "Your recent list is currently empty. Party with mates and you will find all your recent parties here.",
         "reducedUIText": "",
         "roomname": "Enter room name",
         "roomnameHint": "Enter the name or URL of the room you want to join. You may make a name up, just let the people you are meeting know it so that they enter the same name.",
         "sendFeedback": "Send feedback",
         "terms": "Terms",
-        "title": "Secure, fully featured, and completely free video conferencing"
+        "title": "Where is the party at? "
     }
 }

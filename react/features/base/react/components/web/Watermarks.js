@@ -154,10 +154,10 @@ class Watermarks extends Component<Props, State> {
             if (brandWatermarkLink) {
                 reactElement = (
                     <a
-                        href = { brandWatermarkLink }
-                        target = '_new'>
-                        { reactElement }
-                    </a>
+                    href = '/'
+                    target = '_new'>
+                    <span>Cloudparty</span>
+                </a>
                 );
             }
         }
@@ -184,10 +184,10 @@ class Watermarks extends Component<Props, State> {
             if (jitsiWatermarkLink) {
                 reactElement = (
                     <a
-                        href = { jitsiWatermarkLink }
-                        target = '_new'>
-                        { reactElement }
-                    </a>
+                    href = '/'
+                    target = '_new'>
+                    <span>Cloudparty</span>
+                </a>
                 );
             }
         }
@@ -208,9 +208,9 @@ class Watermarks extends Component<Props, State> {
             return (
                 <a
                     className = 'poweredby'
-                    href = 'http://jitsi.org'
+                    href = '/'
                     target = '_new'>
-                    <span>{ t('poweredby') } jitsi.org</span>
+                    <span>{ t('poweredby') } Cloudparty</span>
                 </a>
             );
         }
