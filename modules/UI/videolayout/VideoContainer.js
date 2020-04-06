@@ -13,6 +13,8 @@ import Filmstrip from './Filmstrip';
 import LargeContainer from './LargeContainer';
 import UIEvents from '../../../service/UI/UIEvents';
 import UIUtil from '../util/UIUtil';
+import roomData from '../../../react/rooms.web';
+
 
 // FIXME should be 'video'
 export const VIDEO_CONTAINER_TYPE = 'camera';
