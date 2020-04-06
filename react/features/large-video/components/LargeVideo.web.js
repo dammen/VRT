@@ -35,7 +35,8 @@ class LargeVideo extends Component<Props> {
         var pathArray = window.location.href.split( '/' );
         const [houseName, roomName] = pathArray[3].split("-");
         const rooms = roomData[houseName] || roomData.default;
-        const room = rooms.find(r => r.name == roomName);
+        
+        const room = roomName ? rooms.find(r => r.name == roomName) : rooms.find(r => r.mainRoom);
 
         return (
             <div
