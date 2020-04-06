@@ -606,9 +606,14 @@ export class VideoContainer extends LargeContainer {
      * @returns {void}
      */
     setLargeVideoBackground(isAvatar) {
+        var pathArray = window.location.href.split( '/' );
+        const [houseName, roomName] = pathArray[3].split("-");
+        const rooms = roomData[houseName] || roomData.default;
+        const room = rooms.find(r => r.name == roomName);
+
         $('#largeVideoContainer').css('background',
             this.videoType === VIDEO_CONTAINER_TYPE && !isAvatar
-                ? '#000' : interfaceConfig.DEFAULT_BACKGROUND);
+                ? room.color : interfaceConfig.DEFAULT_BACKGROUND);
     }
 
     /**
