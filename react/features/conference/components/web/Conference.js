@@ -14,7 +14,7 @@ import { CalleeInfoContainer } from '../../../invite';
 import { LargeVideo } from '../../../large-video';
 import { LAYOUTS, getCurrentLayout } from '../../../video-layout';
 
-import rooms from '../../../../rooms.web';
+import roomData from '../../../../rooms.web';
 
 import {
     Toolbox,
@@ -180,6 +180,9 @@ class Conference extends AbstractConference<Props, *> {
                 || VIDEO_QUALITY_LABEL_DISABLED
                 || this.props._iAmRecorder;
 
+
+        const houseName = window.location.href.split("-")[0];
+        const rooms = roomData[houseName] || roomData.default;
         return (
             <div
                 className = { this.props._layoutClassName }
@@ -200,9 +203,9 @@ class Conference extends AbstractConference<Props, *> {
                         width: "120px",
                         zIndex: "5"
                     }}>
-                        {rooms.capra.map(room => {
+                        {rooms.map(room => {
                           return (
-                            <a href={ window.location.href.split("-")[0] + '-' + room.name} className="subRoom1">
+                            <a href={ houseName + '-' + room.name} className="subRoom1">
                                 <div
                                   className="subRoom2"
                                   style={{
