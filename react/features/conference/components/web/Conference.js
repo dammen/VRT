@@ -14,6 +14,8 @@ import { CalleeInfoContainer } from '../../../invite';
 import { LargeVideo } from '../../../large-video';
 import { LAYOUTS, getCurrentLayout } from '../../../video-layout';
 
+import rooms from '../../../../rooms.web';
+
 import {
     Toolbox,
     fullScreenChanged,
@@ -192,86 +194,26 @@ class Conference extends AbstractConference<Props, *> {
                     <Filmstrip filmstripOnly = { filmstripOnly } />
                     <div className="sub-room-overview" style={{
                         position:"absolute",
-                        top: "150px", 
-                        left: "0px", 
-                        bottom: "150px", 
+                        top: "150px",
+                        left: "0px",
+                        bottom: "150px",
                         width: "120px",
                         zIndex: "5"
                     }}>
-                        <a href={ window.location.href.split("-")[0]} className="subRoom1">
-                            <div 
-                            className="subRoom2"
-                            style={{
-                                backgroundColor: "#508991",
-                                width: "100px",
-                                height: "100px",
-                                margin: "10px",
-                                zIndex: "5",
-                                borderRadius: "20px",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center", 
-                                fontSize: "larger",
-                            }}>
-                            Livingroom
-                            </div>
-                        </a> 
-                        <a href={window.location.href.split("-")[0] + "-kitchen"} className="subRoom1">
-                            <div 
-                             className="subRoom2"
-                            style={{
-                                backgroundColor: "#172A3A",
-                                width: "100px",
-                                height: "100px",
-                                margin: "10px",
-                                zIndex: "5",
-                                borderRadius: "20px",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center", 
-                                fontSize: "larger"
-                            }}>
-                                Kitchen
-                            </div>
-                        </a>
-                        <a href={window.location.href.split("-")[0] + "-bedroom"} className="subRoom1">
-                            <div 
-                             className="subRoom2"
-                            style={{
-                                backgroundColor: "#004346",
-                                width: "100px",
-                                height: "100px",
-                                margin: "10px",
-                                zIndex: "5",
-                                borderRadius: "20px",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center", 
-                                fontSize: "larger"
-                            }}>
-                                Bedroom
-                            </div>
-                        </a>
-                        <a href={window.location.href.split("-")[0] + "-bathroom"}className="subRoom1">
-                            <div 
-                            className="subRoom2"
-                            style={{
-                                backgroundColor: "#09BC8A",
-                                width: "100px",
-                                height: "100px",
-                                margin: "10px",
-                                zIndex: "5",
-                                borderRadius: "20px",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center", 
-                                fontSize: "larger"
-                            }}>
-                                Bathroom
-                            </div>
-                        </a>
+                        {rooms.capra.map(room => {
+                          return (
+                            <a href={ window.location.href.split("-")[0] + '-' + room.name} className="subRoom1">
+                                <div
+                                  className="subRoom2"
+                                  style={{
+                                    backgroundColor: room.color
+                                  }}>
+                                  {room.name}
+                                </div>
+                            </a>
+                          )
+                        })}
                     </div>
-
                 </div>
 
                 { filmstripOnly || <Toolbox /> }

@@ -1,12 +1,20 @@
-
 .subRoom2 {
     transition: all 0.5s !important;
-    box-shadow: 0 0 5px -1px rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.5);
     color: whitesmoke !important;
-
+    background-color: #508991;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    z-index: 5;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
 }
-.subRoom2:hover {                             
+
+.subRoom2:hover {
     transform: scale(1.1);
     color: black;
-
 }
