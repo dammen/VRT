@@ -204,8 +204,9 @@ class Conference extends AbstractConference<Props, *> {
                         zIndex: "5"
                     }}>
                         {rooms.map(room => {
+                          const uri = room.mainRoom ? houseName : houseName + '-' + room.name;
                           return (
-                            <a href={ houseName + '-' + room.name} className="subRoom1">
+                            <a href={ uri } className="subRoom1">
                                 <div
                                   className="subRoom2"
                                   style={{
