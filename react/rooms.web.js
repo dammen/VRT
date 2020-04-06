@@ -24,7 +24,7 @@ const data = {
         },
         {
             name: "bathroom",
-            mainRoom: true,
+            mainRoom: false,
             color: "#e74c3c"
         }
     ]
