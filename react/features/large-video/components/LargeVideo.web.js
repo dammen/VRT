@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { Watermarks } from '../../base/react';
 import { Captions } from '../../subtitles/';
 import { connect } from '../../base/redux';
+import roomData from '../../../rooms.web';
 
 declare var interfaceConfig: Object;
 
@@ -31,10 +32,16 @@ class LargeVideo extends Component<Props> {
      * @returns {React$Element}
      */
     render() {
+        var pathArray = window.location.href.split( '/' );
+        const houseName, roomName = pathArray[3].split("-");
+        const rooms = roomData[houseName] || roomData.default;
+        const room = rooms.find(r => r.name == roomName);
+
         return (
             <div
                 className = 'videocontainer'
-                id = 'largeVideoContainer'>
+                id = 'largeVideoContainer'
+                style={{backgroundColor: room.color}}>
                 <div id = 'sharedVideo'>
                     <div id = 'sharedVideoIFrame' />
                 </div>
