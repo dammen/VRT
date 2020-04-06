@@ -182,6 +182,8 @@ class Conference extends AbstractConference<Props, *> {
 
 
         const houseName = window.location.href.split("-")[0];
+        console.log("houseName: " + houseName);
+        console.dir(roomData);
         const rooms = roomData[houseName] || roomData.default;
         return (
             <div
