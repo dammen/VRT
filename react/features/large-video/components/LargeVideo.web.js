@@ -33,7 +33,7 @@ class LargeVideo extends Component<Props> {
      */
     render() {
         var pathArray = window.location.href.split( '/' );
-        const houseName, roomName = pathArray[3].split("-");
+        const [houseName, roomName] = pathArray[3].split("-");
         const rooms = roomData[houseName] || roomData.default;
         const room = rooms.find(r => r.name == roomName);
 
