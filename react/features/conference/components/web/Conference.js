@@ -181,9 +181,10 @@ class Conference extends AbstractConference<Props, *> {
                 || this.props._iAmRecorder;
 
 
-        const houseName = window.location.href.split("-")[0];
-        console.log("houseName: " + houseName);
-        console.dir(roomData);
+        var pathArray = window.location.href.split( '/' );
+        var baseUrl = pathArray[0] + '//' + pathArray[2];
+
+        const houseName = pathArray[3].split("-")[0];
         const rooms = roomData[houseName] || roomData.default;
         return (
             <div
@@ -206,9 +207,9 @@ class Conference extends AbstractConference<Props, *> {
                         zIndex: "5"
                     }}>
                         {rooms.map(room => {
-                          const uri = room.mainRoom ? houseName : houseName + '-' + room.name;
+                          const url = `${baseUrl}/${room.mainRoom ? houseName : houseName + '-' + room.name}`; 
                           return (
-                            <a href={ uri } className="subRoom1">
+                            <a href={ url } className="subRoom1">
                                 <div
                                   className="subRoom2"
                                   style={{
