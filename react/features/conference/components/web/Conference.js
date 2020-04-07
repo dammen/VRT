@@ -186,6 +186,7 @@ class Conference extends AbstractConference<Props, *> {
 
         const houseName = pathArray[3].split("-")[0];
         const rooms = roomData[houseName] || roomData.default;
+        
         return (
             <div
                 className = { this.props._layoutClassName }
