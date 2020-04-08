@@ -35,22 +35,22 @@ const data = {
             color: "#34495e"
         },
         {
-            name: "Olavs rom",
+            name: "olavs-rom",
             mainRoom: false,
             color: "#2ecc71"
         },
         {
-            name: "Lars rom",
+            name: "lars-rom",
             mainRoom: false,
             color: "#2980b9"
         },
         {
-            name: "Trudes rom",
+            name: "trudes-rom",
             mainRoom: false,
             color: "#e74c3c"
         },
         {
-            name: "Mariannes rom",
+            name: "mariannes-rom",
             mainRoom: false,
             color: "#f1c40f"
         }
