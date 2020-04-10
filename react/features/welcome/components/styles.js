@@ -286,7 +286,7 @@ export default {
      * The style of the top-level container of {@code WelcomePage}.
      */
     welcomePage: {
-        backgroundColor: ColorPalette.blue,
+        backgroundColor: ColorPalette.green,
         overflow: 'hidden'
     }
 };

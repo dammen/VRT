@@ -183,7 +183,10 @@ class WelcomePage extends AbstractWelcomePage {
                         }
                     </div>
                     <div className = 'header-image'>
-                        <img src="images/cloudparty-logo-white.png" alt="Logo" />
+                        <img
+                            src="images/cloudparty-logo-white.png"
+                            style={{height: "200px", width:"200px"}}
+                            alt="Logo" />
                     </div>
                     <div className = 'header-text'>
                         <h1 className = 'header-text-title'>
