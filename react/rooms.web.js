@@ -25,7 +25,7 @@ const data = {
         {
             name: "bathroom",
             mainRoom: false,
-            color: "#e74c3c"
+            color: "#f1c40f"
         }
     ],
     swagsquad: [
