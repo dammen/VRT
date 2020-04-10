@@ -173,7 +173,7 @@ export default {
      */
     reducedUIContainer: {
         alignItems: 'center',
-        backgroundColor: ColorPalette.blue,
+        backgroundColor: ColorPalette.green,
         flex: 1,
         justifyContent: 'center'
     },

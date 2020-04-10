@@ -12,6 +12,7 @@ import { SettingsButton, SETTINGS_TABS } from '../../settings';
 
 import { AbstractWelcomePage, _mapStateToProps } from './AbstractWelcomePage';
 import Tabs from './Tabs';
+import logoWhite from '../../../../images/cloudparty-logo-white.png';
 
 /**
  * The pattern used to validate room name.
@@ -182,7 +183,9 @@ class WelcomePage extends AbstractWelcomePage {
                             : null
                         }
                     </div>
-                    <div className = 'header-image' />
+                    <div className = 'header-image'>
+                        <img src={logoWhite} alt="Logo" />
+                    </div>
                     <div className = 'header-text'>
                         <h1 className = 'header-text-title'>
                             { t('welcomepage.title') }
