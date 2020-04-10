@@ -156,7 +156,7 @@ class Watermarks extends Component<Props, State> {
                     <a
                     href = '/'
                     target = '_new'>
-                    <span>Cloudparty</span>
+                    <span>CloudParty</span>
                 </a>
                 );
             }
@@ -186,7 +186,7 @@ class Watermarks extends Component<Props, State> {
                     <a
                     href = '/'
                     target = '_new'>
-                    <span>Cloudparty</span>
+                    <span>CloudParty</span>
                 </a>
                 );
             }
@@ -210,7 +210,7 @@ class Watermarks extends Component<Props, State> {
                     className = 'poweredby'
                     href = '/'
                     target = '_new'>
-                    <span>{ t('poweredby') } Cloudparty</span>
+                    <span>{ t('poweredby') } CloudParty</span>
                 </a>
             );
         }
