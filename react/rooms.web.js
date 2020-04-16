@@ -28,6 +28,34 @@ const data = {
             color: "#f1c40f"
         }
     ],
+    edge: [
+        {
+            name: "livingroom",
+            mainRoom: true,
+            color: "#745C97"
+        },
+        {
+            name: "kitchen",
+            mainRoom: false,
+            color: "#C492B1"
+        },
+        {
+            name: "bathroom",
+            mainRoom: false,
+            color: "#AF3B6E"
+        }, 
+        {
+            name: "bedroom",
+            mainRoom: false,
+            color: "#424651"
+        }
+/*         {
+            name: "office",
+            mainRoom: false,
+            color: "#39375B"
+        } */
+        
+    ],
     swagsquad: [
         {
             name: "Stua",

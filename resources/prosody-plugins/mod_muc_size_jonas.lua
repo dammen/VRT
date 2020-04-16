@@ -65,7 +65,7 @@ function handle_get_rooms (event)
 
     local params = parse(event.request.url.query);
 	local room_names = params["roomname"];
-	local domain_name = params["domain"];
+	local domain_name = "www.edutopia.no" --params["domain"];
 	local rooms =  mysplit(room_names, "_");
 
 	local payload = array();
