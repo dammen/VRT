@@ -38,6 +38,17 @@ end
 local muc_domain_prefix
     = module:get_option_string("muc_mapper_domain_prefix", "conference");
 
+
+function has_value(tab, val)
+	for _, value in ipairs(tab) do
+		if value == val then
+			return true
+		end
+	end
+	return false
+	end
+	
+
 --- Verifies room name, domain name with the values in the token
 -- @param token the token we received
 -- @param room_address the full room address jid
