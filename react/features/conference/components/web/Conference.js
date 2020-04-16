@@ -102,7 +102,17 @@ class Conference extends AbstractConference<Props, *> {
     constructor(props) {
         super(props);
 
-        // Throttle and bind this component's mousemove handler to prevent it
+        const urlArray = window.location.href.split("/")
+        const houseName = urlArray[urlArray.length -1].split("-")[0]
+        const rooms = roomData[houseName] || roomData.default;
+        this.roomsConfig = rooms;
+        // used to fetch roomInfo
+        this.roomsArgs = rooms.map(room => room.mainRoom ? houseName : houseName + '-' + room.name).join("_")
+        this.houseName = houseName
+        this.state = {
+            houseInfo: rooms,
+            hoverIndex: -1
+          }         // Throttle and bind this component's mousemove handler to prevent it
         // from firing too often.
         this._originalOnShowToolbar = this._onShowToolbar;
         this._onShowToolbar = _.throttle(
@@ -125,7 +135,48 @@ class Conference extends AbstractConference<Props, *> {
     componentDidMount() {
         document.title = interfaceConfig.APP_NAME;
         this._start();
+        try {
+            setInterval(async () => {
+                fetch("/room?roomname=" + this.roomsArgs).then((res)=>
+                    {
+                        if(res.status == 200) {
+                            return res.text();
+                        }
+                        else {
+                            console.warn("Couldnt fetch houseInfo");
+                            return;
+                        }
+                    }).then((data) => {
+                        const houseInfo = JSON.parse(data);
+                        const tempHouseInfo = []
+                        this.state.houseInfo.forEach(room => {
+                            let roomInfo = null;
+                            if (room.mainRoom) {
+                                roomInfo = houseInfo.find(obj => obj.room_name === this.houseName)
+                            } else {
+                                roomInfo = houseInfo.find(obj => obj.room_name ===  this.houseName + "-" + room.name)
+                            }
+                            if (roomInfo) {
+                                tempHouseInfo.push({
+                                    ...room, 
+                                    count: roomInfo.count,
+                                    users: roomInfo.count !== 0 && roomInfo.users
+                                })
+                            }
+                        });
+                        this.setState({
+                            houseInfo: tempHouseInfo
+                        })
+                    }
+                )
+             
+            }, 2000);
+            
+        } catch (err) {
+            console.log(err);
+        }
     }
+
 
     /**
      * Calls into legacy UI to update the application layout, if necessary.
@@ -185,8 +236,7 @@ class Conference extends AbstractConference<Props, *> {
         var baseUrl = pathArray[0] + '//' + pathArray[2];
 
         const houseName = pathArray[3].split("-")[0];
-        const rooms = roomData[houseName] || roomData.default;
-        
+        const roomAttributes = roomData[houseName] || roomData.default;
         return (
             <div
                 className = { this.props._layoutClassName }
@@ -207,16 +257,35 @@ class Conference extends AbstractConference<Props, *> {
                         width: "120px",
                         zIndex: "5"
                     }}>
-                        {rooms.map(room => {
+                        {this.state.houseInfo.length > 0 && this.state.houseInfo.map((room, index) => {
                           const url = `${baseUrl}/${room.mainRoom ? houseName : houseName + '-' + room.name}`; 
                           return (
-                            <a href={ url } className="subRoom1">
+                            <a 
+                                onMouseOver={e => {
+                                    this.setState({hoverIndex: index})
+                                }}
+                                onMouseOut={e => {
+                                    this.setState({hoverIndex: -1})
+                                }} 
+                                href={ url } className="subRoom1">
                                 <div
-                                  className="subRoom2"
-                                  style={{
-                                    backgroundColor: room.color
-                                  }}>
-                                  {room.name}
+                                    className="subRoom2"
+                                    style={{
+                                        backgroundColor: room.color
+                                    }}
+                                    
+                                    >
+                                    {room.name}
+                                    <span>({room.count ? room.count : 0})</span>
+                                    {this.state.hoverIndex == index &&
+                                        <>
+                                            {room.users ? 
+                                                room.users.map(user => <span>{user}</span>) 
+                                                : 
+                                                <span>no users</span>
+                                            }
+                                        </>
+                                    }
                                 </div>
                             </a>
                           )
@@ -263,25 +332,6 @@ class Conference extends AbstractConference<Props, *> {
      * @inheritdoc
      */
     _start() {
-      /*   try {
-            const urlArray = window.location.href.split("/")
-            const roomName = urlArray[urlArray.length -1].split("-")[0]
-            const tempConp = openConnection({ roomName: roomName + "-bathroom"}).then((res)=>{
-                console.log("CONNECTION OPENED")
-                console.log(
-                    res
-                )
-            })
-            console.log("tempConn")
-            console.log(tempConp);
-          
-            console.log("HEEEERRRREEEEE")
-            console.log(APP)
-            console.log(APP.store.getState())
-        } catch (err) {
-            console.log(err);
-        } */
-        
         APP.UI.start();
 
         APP.UI.registerListeners();

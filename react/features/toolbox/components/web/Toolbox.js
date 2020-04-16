@@ -21,7 +21,8 @@ import {
     IconRaisedHand,
     IconRec,
     IconShareDesktop,
-    IconShareVideo
+    IconShareVideo,
+    IconVolume
 } from '../../../base/icons';
 import {
     getLocalParticipant,
@@ -85,6 +86,7 @@ import {
     ClosedCaptionButton
 } from '../../../subtitles';
 
+import "./toolbox.css"
 /**
  * The type of the React {@code Component} props of {@link Toolbox}.
  */
@@ -250,9 +252,15 @@ class Toolbox extends Component<Props, State> {
         this._onToolbarToggleSharedVideo = this._onToolbarToggleSharedVideo.bind(this);
         this._onToolbarOpenLocalRecordingInfoDialog = this._onToolbarOpenLocalRecordingInfoDialog.bind(this);
         this._onShortcutToggleTileView = this._onShortcutToggleTileView.bind(this);
+        this._onPlayMousic = this._onPlayMousic.bind(this);
+        this._updateSoundUrl = this._updateSoundUrl.bind(this);
+        this._submitSoundUrl = this._submitSoundUrl.bind(this);
+        this._closeModal = this._closeModal.bind(this);
 
         this.state = {
-            windowWidth: window.innerWidth
+            windowWidth: window.innerWidth,
+            showModal: false,
+            soundUrl: ""
         };
     }
 
@@ -307,6 +315,7 @@ class Toolbox extends Component<Props, State> {
         });
 
         window.addEventListener('resize', this._onResize);
+
     }
 
     /**
@@ -340,7 +349,60 @@ class Toolbox extends Component<Props, State> {
 
         window.removeEventListener('resize', this._onResize);
     }
+    _updateSoundUrl: () => void;
 
+    _updateSoundUrl(e) {
+        this.setState({ soundUrl: e.target.value})
+
+    }
+    _submitSoundUrl: () => void;
+
+    _submitSoundUrl(){
+        console.log(this.state.soundUrl)
+        if (this.state.soundUrl) {
+            console.log("SETTING soundUrl")
+            var pathArray = window.location.href.split( '/' );
+            //const houseName = pathArray[3].split("-")[0];
+            const roomName = pathArray[3];
+            try {
+                (async () => {
+                    fetch("/song?room=" + roomName + "&url=" + this.state.soundUrl, {
+                        method: "POST"
+                    }).then((res)=>
+                        {
+                            if(res.status == 200) {
+                                return res.text();
+                            }
+                            else {
+                                console.warn("Couldnt set song");
+                                return;
+                            }
+                        }).then((data) => {
+                            console.log(data)
+                            this.setState({ showModal: false})
+                        }
+                    )
+                    
+                })();
+                
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    }
+
+    _closeModal: () => void;
+/* TODO: ADD HANDLING FOR CLICK OUTSIDE OF MODAL
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+*/
+    _closeModal(e) {
+        this.setState({ showModal: false})
+    }
     /**
      * Implements React's {@link Component#render()}.
      *
@@ -353,14 +415,33 @@ class Toolbox extends Component<Props, State> {
             _visibleButtons.size ? '' : 'no-buttons'}`;
 
         return (
-            <div
-                className = { rootClassNames }
-                id = 'new-toolbox'
-                onMouseOut = { this._onMouseOut }
-                onMouseOver = { this._onMouseOver }>
-                <div className = 'toolbox-background' />
-                { this._renderToolboxContent() }
-            </div>
+            <>
+            {this.state.showModal && 
+                <div id="musicModal" className="musicModal">
+                    <div className="musicModal-content">
+                    <span className="closeMusicModal">Enter music url</span>
+                    <input
+                        placeholder="Enter url..."
+                        type="text"
+                        style={{margin: "2em"}}
+                        value={this.state.soundUrl}
+                        onChange={this._updateSoundUrl}
+                        ></input>                   
+                    <button onClick={this._submitSoundUrl} >submit</button>
+                    <button style={{backgroundColor:"red"}} onClick={this._closeModal} >close</button>
+                    </div>
+
+                </div>            
+            }
+                <div
+                    className = { rootClassNames }
+                    id = 'new-toolbox'
+                    onMouseOut = { this._onMouseOut }
+                    onMouseOver = { this._onMouseOver }>
+                    <div className = 'toolbox-background' />
+                    { this._renderToolboxContent() }
+                </div>
+            </>
         );
     }
 
@@ -865,6 +946,50 @@ class Toolbox extends Component<Props, State> {
 
         this.props.dispatch(openDialog(LocalRecordingInfoDialog));
     }
+    _onPlayMousic: () => void;
+
+    /**
+     * Opens Music in a new window
+     *
+     * @private
+     * @returns {void}
+     */
+    _onPlayMousic() {
+
+        // Fetch room music
+
+        var pathArray = window.location.href.split( '/' );
+        //const houseName = pathArray[3].split("-")[0];
+        const roomName = pathArray[3];
+        try {
+            (async () => {
+                fetch("/song?room=" + roomName).then((res)=>
+                    {
+                        if(res.status == 200) {
+                            return res.text();
+                        }
+                        else {
+                            console.warn("Couldnt fetch houseInfo");
+                            return;
+                        }
+                    }).then((data) => {
+                        console.log(data)
+                        if (data) {
+                            window.open(data, '_blank');
+                        } else {
+                            console.log("NO SONG SET")
+                            this.setState({showModal: true})
+                        }
+                    }
+                )
+                
+            })();
+            
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
 
     /**
      * Returns true if the the desktop sharing button should be visible and
@@ -1235,6 +1360,13 @@ class Toolbox extends Component<Props, State> {
                         buttonsLeft.indexOf('closedcaptions') !== -1
                             && <ClosedCaptionButton />
                     }
+                    { <ToolbarButton
+                            accessibilityLabel = { t('toolbar.accessibilityLabel.raiseHand') }
+                            icon = { IconVolume }
+                            onClick = { this._onPlayMousic }
+                            toggled = { _raisedHand }
+                            tooltip = { t('toolbar.raiseHand') } /> }
+                    
                 </div>
                 <div className = 'button-group-center'>
                     <AudioMuteButton
