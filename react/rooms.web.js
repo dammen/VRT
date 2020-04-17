@@ -63,24 +63,68 @@ const data = {
             color: "#34495e"
         },
         {
-            name: "olavs-rom",
+            name: "olavsrom",
             mainRoom: false,
             color: "#2ecc71"
         },
         {
-            name: "lars-rom",
+            name: "larsrom",
             mainRoom: false,
             color: "#2980b9"
         },
         {
-            name: "trudes-rom",
+            name: "trudesrom",
             mainRoom: false,
             color: "#e74c3c"
         },
         {
-            name: "mariannes-rom",
+            name: "mariannesrom",
             mainRoom: false,
             color: "#f1c40f"
+        }
+    ],
+    bobsydie: [
+        {
+            name: "Entrance",
+            mainRoom: true,
+            color: "#745C97"
+        },
+        {
+            name: "Roof",
+            mainRoom: false,
+            color: "#C492B1"
+        },
+        {
+            name: "Front",
+            mainRoom: false,
+            color: "#AF3B6E"
+        }, 
+        {
+            name: "Dancefloor",
+            mainRoom: false,
+            color: "#424651"
+        }
+    ],
+    shakejunt: [
+        {
+            name: "Entrance",
+            mainRoom: true,
+            color: "#7CB4B8"
+        },
+        {
+            name: "Roof",
+            mainRoom: false,
+            color: "#D8EA38"
+        },
+        {
+            name: "Front",
+            mainRoom: false,
+            color: "#68F200"
+        }, 
+        {
+            name: "Dancefloor",
+            mainRoom: false,
+            color: "#524948"
         }
     ]
 };

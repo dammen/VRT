@@ -430,8 +430,9 @@ window.onclick = function(event) {
                 <div id="musicModal" className="musicModal">
                     <div className="musicModal-content">
                     <span className="closeMusicModal">
-                        Create a room at <a herf="https://www.watch2gether.com/">watch2gether</a> then copy and paste the url. 
-                        If it doesn’t play the same music, then make sure that you have disabled pop-up blocker for watcht2gether. 
+                        <span>Create a room at</span> 
+                            <a herf="https://www.watch2gether.com/" target="_blank">watch2gether</a> 
+                        <span>then copy and paste the url. If it doesn’t play the same music, then make sure that you have disabled pop-up blocker for watcht2gether.</span>
                     </span>
                     <input
                         placeholder="Enter url..."
@@ -450,11 +451,15 @@ window.onclick = function(event) {
                 <div id="musicModal" className="musicModal">
                     <div className="musicModal-content">
                     <span className="closeMusicModal">Choose a game to play with your friends</span>
-                    <a href="https://tiltspot.tv/" target="_blank">Tiltspot</a>    
-                    <a href="https://jackbox.tv/" target="_blank">Jackbox</a>               
-                    <a href="https://create.kahoot.it/discover" target="_blank">Kahoot</a>
-                    <a href="https://skribbl.io/" target="_blank">Skribbl</a>
-                    <a href="https://www.netflixparty.com/" target="_blank">Netflixparty</a>
+                    <div><a href="https://tiltspot.tv/" target="_blank">Tiltspot</a><span> Share your screen, join with your phone and play Cards Against Humanity, stickman fighting and many other games!</span> </div>
+                    <div>><a href="https://jackbox.tv/" target="_blank">Jackbox</a><span> Buy one of the world renound party packs, share your screen, let your friends join with their phones and play!</span></div>
+                    <div>><a href="https://create.kahoot.it/discover" target="_blank">Kahoot</a><span> Share screen, make a Kahoot about your friends, or decide on who knows the most about Disney princesses!</span></div>
+                    <div><a href="https://skribbl.io/" target="_blank">Skribbl</a><span> Make a room together, draw and guess! Find out who's a little Leonardo Da Vinci.</span></div>
+                    <div><a href="https://www.netflixparty.com/" target="_blank">Netflixparty</a><span> Download the plugin, open Netflix, watch together and rant.</span></div>
+                    <div><a href="https://1v1.lol/" target="_blank">1v1.lol</a><span> Verse your peers in fortnite-like combat!</span></div>
+                    <div><a href="https://psycatgames.com/app/picolo/" target="_blank">Picolo</a><span> 18+! Share your screen, add your friends and do what the cards tell you!</span></div>
+                    <div><a href="https://drunkpirate.co.uk/" target="_blank">Drunk Pirate</a><span> 18+! Share your screen, add your friends and do what the cards tell you!</span></div>
+                    <div><a href="https://www.drinkvirtually.com/" target="_blank">Drink Virtually</a><span> 18+! Share your screen and play one of many classic drinking games!</span></div>
                     <button style={{backgroundColor:"red"}} onClick={this._closeGamingModal} >close</button>
                     </div>
 
