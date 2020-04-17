@@ -17,27 +17,45 @@
   .musicModal-content {
     display: flex; /* Hidden by default */
     flex-direction: column;
-    background-color: #fefefe;
+    text-align: center;
     margin: 15% auto; /* 15% from the top and centered */
     border-radius: 20px;
     padding: 20px;
-    border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */
     z-index: 200; /* Sit on top */
+    background-color: rgba(40, 52, 71, 0.9);
+    color: rgb(184, 199, 224);
+
+  }
+
+  .submitButtonMusicModal {
+    border-radius: 5px;
+    color: rgb(27, 38, 56) !important;
+    background: rgb(76, 154, 255);
+    margin: 1em;
+    transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
 
   }
   
+  .submitButtonMusicModal:hover {
+    background-color: rgb(179, 212, 255);
+  }
   /* The Close Button */
   .closeMusicModal {
-    color: #aaa;
-    float: right;
+    background: transparent;
+    color: rgb(159, 176, 204) !important;
     font-size: 28px;
     font-weight: bold;
+    margin: 1em;
+    transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+
   }
   
   .closeMusicModal:hover,
   .closeMusicModal:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+    background-color: rgb(49,61,82);
+  }
+
+  .gameLink{
+    padding-top: 0.5em;
   }

@@ -429,42 +429,55 @@ window.onclick = function(event) {
             {this.state.showModal && 
                 <div id="musicModal" className="musicModal">
                     <div className="musicModal-content">
-                    <h1>
-                        Create a shared music stream for everyone to listen
-                    </h1>
-                    <div>
-                    <span>Create a room at</span> 
-                            <a herf="https://www.watch2gether.com/" target="_blank"> watch2gether </a> 
-                        <span>then copy and paste the url here. <br />Make sure to disable any pop-up blocker for watcht2gether.</span>
-                    </div>
-                    <input
-                        placeholder="Enter url..."
-                        type="text"
-                        style={{margin: "2em"}}
-                        value={this.state.soundUrl}
-                        onChange={this._updateSoundUrl}
-                        ></input>                   
-                    <button onClick={this._submitSoundUrl} >submit</button>
-                    <button style={{backgroundColor:"red"}} onClick={this._closeModal} >close</button>
-                    </div>
+                        <h1 style={{marginBottom: "2em"}}>
+                            Create a shared music stream for everyone to listen
+                        </h1>
+                        <div 
+                            style={{
+                                display: "flex", 
+                                flexDirection: "column", 
+                                alignItems:"center", 
+                                justifyContent: "space-around", 
+                                textAlign: "center", 
+                                fontSize: "16px"
 
+                            }}
+                            >
+                            <span>Create a room at: </span> 
+                            <a style={{margin: "1em"}} style={{fontSize:"20px"}} href="https://www.watch2gether.com/" target="_blank"> watch2gether </a> 
+                            <span>then copy and paste the url below </span>
+                            <span style={{margin: "2em"}}>Make sure to disable any pop-up blocker for watcht2gether.</span>
+                        </div>
+                        <div style={{display: "flex", flexDirection:"column", justifyContent: "flex-end", alignItems: "center", fontSize: "18px",}}>
+                            <input
+                                placeholder="Enter url..."
+                                type="text"
+                                style={{backgroundColor: "rgba(22,38,55,.8)", width: "75%", textAlign: "center", color:"#9d9d9d", borderColor: "rgb(32, 43, 61)", borderRadius: "5px"}}
+                                value={this.state.soundUrl}
+                                onChange={this._updateSoundUrl}
+                                >
+                            </input>                   
+                            <button className="submitButtonMusicModal" onClick={this._submitSoundUrl} >submit</button>
+                        </div>
+                        <button className="closeMusicModal" onClick={this._closeModal} >close</button>
+                    </div>
                 </div>            
             }
              {this.state.showGameModal && 
                 <div id="musicModal" className="musicModal">
                     <div className="musicModal-content">
                     <h1>Choose a game to play with your friends</h1>
-                    <div><a href="https://snapcamera.snapchat.com/download/" target="_blank">Snapchat filters</a><span> Yes, this isnt a game. BUT. Download all the snapchat filters you want!</span> </div>
-                    <div><a href="https://tiltspot.tv/" target="_blank">Tiltspot</a><span> Share your screen, join with your phone and play Cards Against Humanity, stickman fighting and many other games!</span> </div>
-                    <div><a href="https://jackbox.tv/" target="_blank">Jackbox</a><span> Buy one of the world renound party packs, share your screen, let your friends join with their phones and play!</span></div>
-                    <div><a href="https://create.kahoot.it/discover" target="_blank">Kahoot</a><span> Share screen, make a Kahoot about your friends, or decide on who knows the most about Disney princesses!</span></div>
-                    <div><a href="https://skribbl.io/" target="_blank">Skribbl</a><span> Make a room together, draw and guess! Find out who's a little Leonardo Da Vinci.</span></div>
-                    <div><a href="https://www.netflixparty.com/" target="_blank">Netflixparty</a><span> Download the plugin, open Netflix, watch together and rant.</span></div>
-                    <div><a href="https://1v1.lol/" target="_blank">1v1.lol</a><span> Verse your peers in fortnite-like combat!</span></div>
-                    <div><a href="https://psycatgames.com/app/picolo/" target="_blank">Picolo</a><span> 18+! Share your screen, add your friends and do what the cards tell you!</span></div>
-                    <div><a href="https://drunkpirate.co.uk/" target="_blank">Drunk Pirate</a><span> 18+! Share your screen, add your friends and do what the cards tell you!</span></div>
-                    <div><a href="https://www.drinkvirtually.com/" target="_blank">Drink Virtually</a><span> 18+! Share your screen and play one of many classic drinking games!</span></div>
-                    <button style={{backgroundColor:"red"}} onClick={this._closeGamingModal} >close</button>
+                    <div className="gameLink"><a  href="https://snapcamera.snapchat.com/download/" target="_blank">Snapchat filters</a><span> Yes, this isnt a game. BUT. Download all the snapchat filters you want!</span> </div>
+                    <div className="gameLink" ><a href="https://tiltspot.tv/" target="_blank">Tiltspot</a><span> Share your screen, join with your phone and play Cards Against Humanity, stickman fighting and many other games!</span> </div>
+                    <div className="gameLink" ><a href="https://jackbox.tv/" target="_blank">Jackbox</a><span> Buy one of the world renound party packs, share your screen, let your friends join with their phones and play!</span></div>
+                    <div className="gameLink" ><a href="https://create.kahoot.it/discover" target="_blank">Kahoot</a><span> Share screen, make a Kahoot about your friends, or decide on who knows the most about Disney princesses!</span></div>
+                    <div className="gameLink" ><a href="https://skribbl.io/" target="_blank">Skribbl</a><span> Make a room together, draw and guess! Find out who's a little Leonardo Da Vinci.</span></div>
+                    <div className="gameLink" ><a href="https://www.netflixparty.com/" target="_blank">Netflixparty</a><span> Download the plugin, open Netflix, watch together and rant.</span></div>
+                    <div className="gameLink" ><a href="https://1v1.lol/" target="_blank">1v1.lol</a><span> Verse your peers in fortnite-like combat!</span></div>
+                    <div className="gameLink" ><a href="https://psycatgames.com/app/picolo/" target="_blank">Picolo</a><span> 18+! Share your screen, add your friends and do what the cards tell you!</span></div>
+                    <div className="gameLink" ><a href="https://drunkpirate.co.uk/" target="_blank">Drunk Pirate</a><span> 18+! Share your screen, add your friends and do what the cards tell you!</span></div>
+                    <div className="gameLink" ><a href="https://www.drinkvirtually.com/" target="_blank">Drink Virtually</a><span> 18+! Share your screen and play one of many classic drinking games!</span></div>
+                    <button className="closeMusicModal" onClick={this._closeGamingModal} >close</button>
                     </div>
 
                 </div>            
