@@ -1,14 +1,29 @@
 const data = {
     default: [
         {
-            name: "livingroom",
+            name: "entrance",
             mainRoom: true,
-            color: "#5ec686"
+            color: "#0B3C49"
+        },
+        {
+            name: "livingroom",
+            mainRoom: false,
+            color: "#40798C"
         },
         {
             name: "kitchen",
             mainRoom: false,
-            color: "#3498db"
+            color: "#70A9A1"
+        },
+        {
+            name: "bedroom",
+            mainRoom: false,
+            color: "#19647E"
+        },
+        {
+            name: "bathroom",
+            mainRoom: false,
+            color: "#28AFB0"
         }
     ],
     capra: [

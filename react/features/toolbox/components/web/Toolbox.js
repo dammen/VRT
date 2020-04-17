@@ -429,11 +429,14 @@ window.onclick = function(event) {
             {this.state.showModal && 
                 <div id="musicModal" className="musicModal">
                     <div className="musicModal-content">
-                    <span className="closeMusicModal">
-                        <span>Create a room at</span> 
+                    <h1>
+                        Create a shared music stream for everyone to listen
+                    </h1>
+                    <div>
+                    <span>Create a room at</span> 
                             <a herf="https://www.watch2gether.com/" target="_blank"> watch2gether </a> 
                         <span>then copy and paste the url here. <br />Make sure to disable any pop-up blocker for watcht2gether.</span>
-                    </span>
+                    </div>
                     <input
                         placeholder="Enter url..."
                         type="text"
@@ -450,7 +453,7 @@ window.onclick = function(event) {
              {this.state.showGameModal && 
                 <div id="musicModal" className="musicModal">
                     <div className="musicModal-content">
-                    <span className="closeMusicModal">Choose a game to play with your friends</span>
+                    <h1>Choose a game to play with your friends</h1>
                     <div><a href="https://snapcamera.snapchat.com/download/" target="_blank">Snapchat filters</a><span> Yes, this isnt a game. BUT. Download all the snapchat filters you want!</span> </div>
                     <div><a href="https://tiltspot.tv/" target="_blank">Tiltspot</a><span> Share your screen, join with your phone and play Cards Against Humanity, stickman fighting and many other games!</span> </div>
                     <div><a href="https://jackbox.tv/" target="_blank">Jackbox</a><span> Buy one of the world renound party packs, share your screen, let your friends join with their phones and play!</span></div>
