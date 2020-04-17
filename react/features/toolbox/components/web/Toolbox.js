@@ -15,8 +15,10 @@ import {
     IconExitFullScreen,
     IconFeedback,
     IconFullScreen,
+    IconGaming,
     IconInvite,
     IconOpenInNew,
+    IconMusic,
     IconPresentation,
     IconRaisedHand,
     IconRec,
@@ -253,13 +255,16 @@ class Toolbox extends Component<Props, State> {
         this._onToolbarOpenLocalRecordingInfoDialog = this._onToolbarOpenLocalRecordingInfoDialog.bind(this);
         this._onShortcutToggleTileView = this._onShortcutToggleTileView.bind(this);
         this._onPlayMousic = this._onPlayMousic.bind(this);
+        this._onPlayGames = this._onPlayGames.bind(this);
         this._updateSoundUrl = this._updateSoundUrl.bind(this);
         this._submitSoundUrl = this._submitSoundUrl.bind(this);
         this._closeModal = this._closeModal.bind(this);
+        this._closeGamingModal = this._closeGamingModal.bind(this);
 
         this.state = {
             windowWidth: window.innerWidth,
             showModal: false,
+            showGameModal: false,
             soundUrl: ""
         };
     }
@@ -390,8 +395,13 @@ class Toolbox extends Component<Props, State> {
             }
         }
     }
+    _closeGamingModal: () => void;
+    _closeGamingModal(e) {
+        this.setState({ showGameModal: false})
+    }
 
     _closeModal: () => void;
+
 /* TODO: ADD HANDLING FOR CLICK OUTSIDE OF MODAL
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -419,7 +429,10 @@ window.onclick = function(event) {
             {this.state.showModal && 
                 <div id="musicModal" className="musicModal">
                     <div className="musicModal-content">
-                    <span className="closeMusicModal">Enter music url</span>
+                    <span className="closeMusicModal">
+                        Create a room at <a herf="https://www.watch2gether.com/">watch2gether</a> then copy and paste the url. 
+                        If it doesn’t play the same music, then make sure that you have disabled pop-up blocker for watcht2gether. 
+                    </span>
                     <input
                         placeholder="Enter url..."
                         type="text"
@@ -429,6 +442,20 @@ window.onclick = function(event) {
                         ></input>                   
                     <button onClick={this._submitSoundUrl} >submit</button>
                     <button style={{backgroundColor:"red"}} onClick={this._closeModal} >close</button>
+                    </div>
+
+                </div>            
+            }
+             {this.state.showGameModal && 
+                <div id="musicModal" className="musicModal">
+                    <div className="musicModal-content">
+                    <span className="closeMusicModal">Choose a game to play with your friends</span>
+                    <a href="https://tiltspot.tv/" target="_blank">Tiltspot</a>    
+                    <a href="https://jackbox.tv/" target="_blank">Jackbox</a>               
+                    <a href="https://create.kahoot.it/discover" target="_blank">Kahoot</a>
+                    <a href="https://skribbl.io/" target="_blank">Skribbl</a>
+                    <a href="https://www.netflixparty.com/" target="_blank">Netflixparty</a>
+                    <button style={{backgroundColor:"red"}} onClick={this._closeGamingModal} >close</button>
                     </div>
 
                 </div>            
@@ -946,6 +973,18 @@ window.onclick = function(event) {
 
         this.props.dispatch(openDialog(LocalRecordingInfoDialog));
     }
+
+    _onPlayGames: () => void;
+      /**
+     * Opens Music in a new window
+     *
+     * @private
+     * @returns {void}
+     */
+    _onPlayGames() { 
+        this.setState({showGameModal: true})
+    }
+
     _onPlayMousic: () => void;
 
     /**
@@ -1361,11 +1400,17 @@ window.onclick = function(event) {
                             && <ClosedCaptionButton />
                     }
                     { <ToolbarButton
-                            accessibilityLabel = { t('toolbar.accessibilityLabel.raiseHand') }
-                            icon = { IconVolume }
+                            accessibilityLabel = "Open a shared music stream"
+                            icon = { IconMusic }
                             onClick = { this._onPlayMousic }
                             toggled = { _raisedHand }
-                            tooltip = { t('toolbar.raiseHand') } /> }
+                            tooltip = "Open a shared music stream" /> }
+                    { <ToolbarButton
+                    accessibilityLabel = "Play games with the party"
+                    icon = { IconGaming }
+                    onClick = { this._onPlayGames }
+                    toggled = { _raisedHand }
+                    tooltip = "Play games with the party" /> }
                     
                 </div>
                 <div className = 'button-group-center'>

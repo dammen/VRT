@@ -261,10 +261,10 @@ class Conference extends AbstractConference<Props, *> {
                           const url = `${baseUrl}/${room.mainRoom ? houseName : houseName + '-' + room.name}`; 
                           return (
                             <a 
-                                onMouseOver={e => {
+                                onMouseEnter={e => {
                                     this.setState({hoverIndex: index})
                                 }}
-                                onMouseOut={e => {
+                                onMouseLeave={e => {
                                     this.setState({hoverIndex: -1})
                                 }} 
                                 href={ url } className="subRoom1">

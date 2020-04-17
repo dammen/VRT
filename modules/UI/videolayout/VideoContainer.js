@@ -15,6 +15,7 @@ import UIEvents from '../../../service/UI/UIEvents';
 import UIUtil from '../util/UIUtil';
 import roomData from '../../../react/rooms.web';
 
+//import image from "../../../resources/img/parkingLot.jpg"
 
 // FIXME should be 'video'
 export const VIDEO_CONTAINER_TYPE = 'camera';
@@ -616,6 +617,9 @@ export class VideoContainer extends LargeContainer {
         $('#largeVideoContainer').css('background',
             this.videoType === VIDEO_CONTAINER_TYPE && !isAvatar
                 ? room.color : interfaceConfig.DEFAULT_BACKGROUND);
+       /*  $('#largeVideoContainer').css('background-image',
+        this.videoType === VIDEO_CONTAINER_TYPE && !isAvatar
+            ? `url(${image})` : "none"); */
     }
 
     /**

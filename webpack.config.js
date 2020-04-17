@@ -132,7 +132,10 @@ const config = {
                     expandProps: 'start'
                 }
             } ]
-        } ]
+        },
+    /*  {
+      test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+      loader: 'url-loader?limit=100000' } */ ]
     },
     node: {
         // Allow the use of the real filename of the module being executed. By

@@ -6,6 +6,7 @@ import { Watermarks } from '../../base/react';
 import { Captions } from '../../subtitles/';
 import { connect } from '../../base/redux';
 import roomData from '../../../rooms.web';
+//import image from "../../../../resources/img/parkingLot.jpg"
 
 declare var interfaceConfig: Object;
 
@@ -43,6 +44,9 @@ class LargeVideo extends Component<Props> {
                 className = 'videocontainer'
                 id = 'largeVideoContainer'
                 style={{backgroundColor: room.color}}>
+               {/*  style={{backgroundImage: `url(${image})`}} */}
+                >
+
                 <div id = 'sharedVideo'>
                     <div id = 'sharedVideoIFrame' />
                 </div>
