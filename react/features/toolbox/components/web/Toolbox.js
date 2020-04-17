@@ -431,8 +431,8 @@ window.onclick = function(event) {
                     <div className="musicModal-content">
                     <span className="closeMusicModal">
                         <span>Create a room at</span> 
-                            <a herf="https://www.watch2gether.com/" target="_blank">watch2gether</a> 
-                        <span>then copy and paste the url. If it doesn’t play the same music, then make sure that you have disabled pop-up blocker for watcht2gether.</span>
+                            <a herf="https://www.watch2gether.com/" target="_blank"> watch2gether </a> 
+                        <span>then copy and paste the url here. <br />Make sure to disable any pop-up blocker for watcht2gether.</span>
                     </span>
                     <input
                         placeholder="Enter url..."
@@ -451,9 +451,10 @@ window.onclick = function(event) {
                 <div id="musicModal" className="musicModal">
                     <div className="musicModal-content">
                     <span className="closeMusicModal">Choose a game to play with your friends</span>
+                    <div><a href="https://snapcamera.snapchat.com/download/" target="_blank">Snapchat filters</a><span> Yes, this isnt a game. BUT. Download all the snapchat filters you want!</span> </div>
                     <div><a href="https://tiltspot.tv/" target="_blank">Tiltspot</a><span> Share your screen, join with your phone and play Cards Against Humanity, stickman fighting and many other games!</span> </div>
-                    <div>><a href="https://jackbox.tv/" target="_blank">Jackbox</a><span> Buy one of the world renound party packs, share your screen, let your friends join with their phones and play!</span></div>
-                    <div>><a href="https://create.kahoot.it/discover" target="_blank">Kahoot</a><span> Share screen, make a Kahoot about your friends, or decide on who knows the most about Disney princesses!</span></div>
+                    <div><a href="https://jackbox.tv/" target="_blank">Jackbox</a><span> Buy one of the world renound party packs, share your screen, let your friends join with their phones and play!</span></div>
+                    <div><a href="https://create.kahoot.it/discover" target="_blank">Kahoot</a><span> Share screen, make a Kahoot about your friends, or decide on who knows the most about Disney princesses!</span></div>
                     <div><a href="https://skribbl.io/" target="_blank">Skribbl</a><span> Make a room together, draw and guess! Find out who's a little Leonardo Da Vinci.</span></div>
                     <div><a href="https://www.netflixparty.com/" target="_blank">Netflixparty</a><span> Download the plugin, open Netflix, watch together and rant.</span></div>
                     <div><a href="https://1v1.lol/" target="_blank">1v1.lol</a><span> Verse your peers in fortnite-like combat!</span></div>
